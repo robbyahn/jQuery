@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <form>
+    
+        <u>4. Using Form Post</u>        
+        <input type="button" id="btnPost" value="Send" />
+        
+		<script type="text/javascript">
+		
+		var $ = jQuery.noConflict();
+		
+            $(function () {
+                $("#btnPost").bind("click", function () {
+                    //Create a Form
+                    /* var $form = $("<form/>").attr("id", "data_form")
+                                .attr("action", "post_page2.php")
+                                .attr("method", "post");  */
+					/* JSP way */
+                    var $form = $("<form/>").attr("id", "data_form")
+                                .attr("action", "post_page2.jsp")
+                                .attr("method", "post");
+								
+					$("body").append($form);
+    
+                    //Append the values to be send
+                    AddParameter($form, "name", 'robby');
+    
+                    //Send the Form
+                    $form[0].submit();
+					
+					
+                });
+            });
+			
+            function AddParameter(form, name, value) {
+                var $input = $("<input />").attr("type", "hidden")
+                                    .attr("name", name)
+                                    .attr("value", value);
+                form.append($input);
+            }
+        </script>
+    </form>
+</body>
+</html>
